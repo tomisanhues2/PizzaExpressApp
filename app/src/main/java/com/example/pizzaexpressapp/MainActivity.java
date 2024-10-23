@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        generateItems();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -35,23 +36,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void generateItems() {
         //generate 5 food items
+        generateFoods(5);
+        //generate 5 drink items
+        generateDrinks(5);
 
     }
 
     private void generateFoods(int quantity) {
-        items.add(new Foods(1, "Pizza Margherita", R.drawable.food1, 10.99));
-        items.add(new Foods(2, "Pizza Margherita", R.drawable.food2, 10.99));
-        items.add(new Foods(3, "Pizza Margherita", R.drawable.food3, 10.99));
-        items.add(new Foods(4, "Pizza Margherita", R.drawable.food4, 10.99));
-        items.add(new Foods(5, "Pizza Margherita", R.drawable.food5, 10.99));
-
+        for (int i = 0; i < quantity; i++) {
+            items.add(new Foods(i, "Pizza", R.drawable.food1, 10.99));
+        }
     }
 
     private void generateDrinks(int quantity) {
-        items.add(new Drinks(1, "Coca Cola", R.drawable.drink1, 2.99));
-        items.add(new Drinks(2, "Coca Cola", R.drawable.drink2, 2.99));
-        items.add(new Drinks(3, "Coca Cola", R.drawable.drink3, 2.99));
-        items.add(new Drinks(4, "Coca Cola", R.drawable.drink4, 2.99));
-        items.add(new Drinks(5, "Coca Cola", R.drawable.drink5, 2.99));
+        for (int i = 0; i < quantity; i++) {
+            items.add(new Drinks(i, "Coke", R.drawable.drink1, 1.99));
+        }
     }
 }
